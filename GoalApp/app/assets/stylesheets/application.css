@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ 
+ body {
+   color: #FFF;
+   
+ }
+ 
+.viewport, h1 {
+  background-color: white;
+  opacity: 0.5;
+  width: 30%;
+  min-width: 250px;
+}
+

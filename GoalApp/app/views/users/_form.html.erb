@@ -1,11 +1,35 @@
 
 <% if key == 'new' 
-button_val = 'Create!'
-action_url = 'users_url'
-
-
+    button_val = 'Create!'
+    action_url = users_url
+  elsif key == 'edit'
+    button_val = 'Edit!'
+    action_url = user_url
+    
+  elsif key == 'login'
+    button_val = 'Logon'
+    action_url = session_url
+  end
 %>
-
+<div class='viewport'>
 <form action="<%= action_url %>" method="post">
-  
-</form>
+  <% if key == :edit %>
+      <input type="hidden" name="_method" value="patch">
+    <% end %>
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>"
+      >
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="user[username]" value="<%= user ? user.username : '' %>">
+    <br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="user[password]">
+    <br>
+
+    <input type="submit" value="<%= button_val %>">
+  </form>
+</div>
